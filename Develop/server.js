@@ -8,6 +8,7 @@ const app = express();
 
 const notes = require('./db/db.json') || [];
 
+//to get a unique ID so that the id may never be reused
 const { v4: uuidV4 } = require('uuid');
 
 // parse incoming string or array data
@@ -17,7 +18,6 @@ app.use(express.json());
 app.use(express.static('public'))
 
 function createNewNote(note, notesArray) {
-  // const note = body;
   notesArray.push(note);
   fs.writeFileSync(
     path.join(__dirname, './db/db.json'),
@@ -26,11 +26,12 @@ function createNewNote(note, notesArray) {
   return note;
 }
 
+// Return all notes when going to notes page
 app.get('/api/notes', (req, res) => {
-  // set id based on what the next index of the array will be
   res.json(notes);
 });
 
+// whenever the page has a POST then this entry is saved
 app.post('/api/notes', (req, res) => {
     // set id based on what the next index of the array will be
   req.body.id = uuidV4();
@@ -38,6 +39,10 @@ app.post('/api/notes', (req, res) => {
   res.json(note);
 });
 
+app.delete('/api/notes/id', (req, res) => {
+  console.log('delete ID:'+ req.params.id);
+
+})
 // Update the notes route to go to notes.html
 app.get('/notes',(req,res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
