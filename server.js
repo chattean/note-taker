@@ -6,7 +6,9 @@ const path = require('path');
 
 const app = express();
 
+// Importing the Database
 const notes = require('./db/db.json') || [];
+
 
 //to get a unique ID so that the id may never be reused
 const { v4: uuidV4 } = require('uuid');
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'))
 
+// Function to add a new note
 function createNewNote(note, notesArray) {
   notesArray.push(note);
   fs.writeFileSync(
@@ -24,6 +27,12 @@ function createNewNote(note, notesArray) {
     JSON.stringify(notesArray, null, 2)
   );
   return note;
+}
+
+// Function to delete a Note
+function deleteNote(noteID, notesArray){
+  const arrayAfterDel = notesArray.filter(data => data.id != noteID);
+  return arrayAfterDel;
 }
 
 // Return all notes when going to notes page
@@ -39,10 +48,17 @@ app.post('/api/notes', (req, res) => {
   res.json(note);
 });
 
-app.delete('/api/notes/id', (req, res) => {
-  console.log('delete ID:'+ req.params.id);
+//********** BONUS *****************//
+// Deletes the note: cant figure out how to refresh the page after the delete. 
+// but when user refreshes the page they see the note deleted. 
 
-})
+app.delete('/api/notes/:id', (req, res) => {
+  fs.writeFileSync(
+    path.join(__dirname, './db/db.json'),
+    JSON.stringify(deleteNote(req.params.id, notes), null, 2)
+  );
+  res.json(notes);
+});
 // Update the notes route to go to notes.html
 app.get('/notes',(req,res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
@@ -52,9 +68,8 @@ app.get('/notes',(req,res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './public/index.html'));
 });
-
 // Start the server on the port
-const PORT = 3001;
+const PORT = 3002;
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
 
 

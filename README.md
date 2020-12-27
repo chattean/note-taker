@@ -2,25 +2,21 @@
 
 ## Description
 
-This will save 
+This will save save a note and edit a note as well as delete a note (you have to refresh inorder to see the note deleted)
     
 
 ## Table of Contents
-* [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
 
-## Installation
-
-    Go to the parent folder in terminal
-    then just run 
-    node app.js     
 
 ## Usage
-
+    Go to the parent folder in terminal
+    then just run 
+    npm start  
+    
 ### WalkThrough Video
 
 <https://drive.google.com/file/d/1ux8LlpolLZ5L9LUfjdY7ZBVE0GE3n84R/view>
