@@ -2,7 +2,7 @@
 
 ## Description
 
-This will save save a note and edit a note as well as delete a note (you have to refresh inorder to see the note deleted)
+This will save save a note and edit a note as well as delete a note (you have to refresh in order to see the note deleted)
     
 
 ## Table of Contents
@@ -16,13 +16,6 @@ This will save save a note and edit a note as well as delete a note (you have to
     Go to the parent folder in terminal
     then just run 
     npm start  
-    
-### WalkThrough Video
-
-<https://drive.google.com/file/d/1ux8LlpolLZ5L9LUfjdY7ZBVE0GE3n84R/view>
-
-### Sample ReadME:
-[Sample Read ME](./assets/sample_README.md)
 
 ### Screenshot
 ![](./assets/sampleReadMe.png)
