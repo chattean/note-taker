@@ -7,9 +7,8 @@ This will save save a note and edit a note as well as delete a note (you have to
 
 ## Table of Contents
 * [Usage](#usage)
-* [Heroku] (#heroku)
+* [Heroku](#heroku)
 * [ScreenShot](#screenshot)
-* [Technologies]
 * [Contributing](#contributing)
 * [Questions](#questions)
 
@@ -21,6 +20,7 @@ This will save save a note and edit a note as well as delete a note (you have to
 
 ## Heroku
 Here is the link to the page deployed via heroku
+[Note-Taker-Heroku-deployed](https://morning-falls-98595.herokuapp.com)
 
 ## Screenshot
 ![](./assets/screenshot.png)
